@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------
     //enum { FALSE, TRUE };
     //EOF as a constant
-    //FALSE: .equ 0
-   //TRUE: .equ 1
-    //EOF: .equ -1
+    BOOL_FALSE: .equ 0
+    BOOL_TRUE: .equ 1
+    FILE_EOF: .equ -1
 
 //--------------------------------------------------------------------
 
@@ -19,7 +19,7 @@ PrintfFormatStr:
     // static long lLineCount = 0;      /* Bad style. */
     // static long lWordCount = 0;      /* Bad style. */
     // static long lCharCount = 0;      /* Bad style. */
-    // tatic int iInWord = FALSE;      /* Bad style. */
+    // tatic int iInWord = BOOL_FALSE;      /* Bad style. */
 
     .global lLineCount
     lLineCount: .quad 0
@@ -31,7 +31,7 @@ PrintfFormatStr:
     lCharCount: .quad 0
 
     .global iInWord
-    iInWord: .word FALSE;
+    iInWord: .word BOOL_FALSE;
 
 
 //--------------------------------------------------------------------
@@ -67,7 +67,7 @@ main:
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
         str     w0, [x1] //store whatever is returned into w0 into iChar
     
-        cmp w0, EOF
+        cmp w0, FILE_EOF
         beq endloop1
 
         //if(!(isspace(iChar))) b else1
@@ -75,13 +75,13 @@ main:
         ldr     w0, [x1] //put iCHAR into w0, the argument reg
         bl      isspace
 
-        cmp     w0, FALSE
+        cmp     w0, BOOL_FALSE
         beq     else1
 
             //if(!(iInWord)) b endif2
             adr     x2, iInWord; //always produces 64-bit address, so use x
             ldr     w1, [x2];
-            cmp     w1, FALSE
+            cmp     w1, BOOL_FALSE
             beq     endif2
             
             adr     x2, lWordCount //x2 has lwordcount address
@@ -91,7 +91,7 @@ main:
 
 
             adr     x4, iInWord //w4 has inword address
-            mov     w5, FALSE //iInWord = FALSE;
+            mov     w5, BOOL_FALSE //iInWord = FALSE;
             str     w5, [x4] //store inro iInWord the falue from w4
             endif2:
 
@@ -99,10 +99,10 @@ main:
         //if(!(iInWord)) b endif3
             adr     x1, iInWord
             ldr     w2, [x1]
-            cmp     w2, FALSE
+            cmp     w2, BOOL_FALSE
             beq     endif3
 
-            mov     w3, TRUE
+            mov     w3, BOOL_TRUE
             str     w3, [x1] //iInWord = TRUE;
         endif3:
 
@@ -125,7 +125,7 @@ main:
     //if(!(iInWord)) b endif5
     adr     x1, iInWord
     ldr     w2, [x1]
-    cmp     w2, FALSE
+    cmp     w2, BOOL_FALSE
     beq     endif5
  
     //lWordCount++
