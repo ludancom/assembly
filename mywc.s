@@ -54,6 +54,11 @@ iChar:
     //----------------------------------------------------------------
     .equ MAIN_STACK_BYTECOUNT, 16
 
+.global main
+.extern getChar    
+.extern isspace
+.extern printf
+
 main:
     //Prolog
     sub     sp, sp, MAIN_STACK_BYTECOUNT
