@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------
     //enum { FALSE, TRUE };
     //EOF as a constant
-    MY_FALSE .equ 0
-    MY_TRUE .equ 1
-    MY_EOF .equ -1
+MY_FALSE .equ 0
+MY_TRUE .equ 1
+MY_EOF .equ -1
 
 //--------------------------------------------------------------------
 
