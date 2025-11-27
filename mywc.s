@@ -62,7 +62,7 @@ main:
 
     loop1:
 
-    //if((iChar = getChar()) == EOF) goto endloop1
+    //if((iChar = getChar()) == EOF) b endloop1
         bl      getChar //returned to x0
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
         str     w0, [x1] //store whatever is returned into w0 into iChar
@@ -70,7 +70,7 @@ main:
         cmp w0, EOF
         beq endloop1
 
-        //if(!(isspace(iChar))) goto else1
+        //if(!(isspace(iChar))) b else1
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
         ldr     w0, [x1] //put iCHAR into w0, the argument reg
         bl      isspace
@@ -78,7 +78,7 @@ main:
         cmp     w0, FALSE
         beq     else1
 
-            //if(!(iInWord)) goto endif2
+            //if(!(iInWord)) b endif2
             adr     x2, iInWord; //always produces 64-bit address, so use x
             ldr     w1, [x2];
             cmp     w1, FALSE
@@ -96,7 +96,7 @@ main:
             endif2:
 
         else1:
-        //if(!(iInWord)) goto endif3
+        //if(!(iInWord)) b endif3
             adr     x1, iInWord
             ldr     w2, [x1]
             cmp     w2, FALSE
@@ -107,7 +107,7 @@ main:
         endif3:
 
         endif1:
-        //if(iChar != '\n') goto endif4
+        //if(iChar != '\n') b endif4
         adr     x1, iChar;
         ldr     w2, [x1];
         cmp     w2, #'\n'; //comparing iChar with newline character
@@ -118,11 +118,11 @@ main:
         add     x2, x2, 1 //lLineCount++
         str     x2, [x1];
         endif4:
-    goto loop1
+    b loop1
 
     endloop1:
 
-    //if(!(iInWord)) goto endif5
+    //if(!(iInWord)) b endif5
     adr     x1, iInWord
     ldr     w2, [x1]
     cmp     w2, FALSE
@@ -136,7 +136,7 @@ main:
     endif5:
     
     //printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount);
-    adr     x0 printfFormatStr
+    adr     x0, printfFormatStr
     adr     x1, lLineCount
     ldr     x1, [x1]
     adr     x2, lWordCount
@@ -147,7 +147,7 @@ main:
 
 
     //Epilog
-    move    w0, 0
+    mov    w0, 0
     ldr     x30, [sp]
     add     sp, sp, MAIN_STACK_BYTECOUNT
     ret
