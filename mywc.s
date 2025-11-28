@@ -9,7 +9,7 @@
 
     .section .rodata
 
-printfFormatStr:
+PrintfFormatStr:
     .string "%7ld %7ld %7ld\n"
 
 //--------------------------------------------------------------------
@@ -56,6 +56,7 @@ iChar:
 
 .global main
 
+
 main:
     //Prolog
     sub     sp, sp, MAIN_STACK_BYTECOUNT
@@ -64,8 +65,8 @@ main:
 
     loop1:
 
-    //if((iChar = getchar()) == EOF) b endloop1
-        bl      getchar //returned to x0
+    //if((iChar = getChar()) == EOF) b endloop1
+        bl      getChar //returned to x0
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
         str     w0, [x1] //store whatever is returned into w0 into iChar
     
