@@ -3,12 +3,12 @@ Assignment 5 readme File
 ------------------------------------------------------------------------
 Student 1: What is your name?
 
-
+Saleema Diallo
 
 ------------------------------------------------------------------------
 Student 2: What is your name?
 
-
+Ludan Abdoulahi
 
 ------------------------------------------------------------------------
 Student 1: What authorized sources of information did you use to
@@ -40,7 +40,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 2: What unauthorized sources of information did you use to
@@ -54,7 +54,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 1: In fulfillment of the requirement from section 2.4.3 of the
@@ -64,7 +64,7 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Saleema Diallo
 
 ------------------------------------------------------------------------
 Student 2: In fulfillment of the requirement from section 2.4.3 of the
@@ -74,7 +74,7 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Ludan Abdoulahi
 
 ------------------------------------------------------------------------
 In fulfillment of the requirement from section 2.4.6 of the Academic
@@ -88,7 +88,7 @@ used AI in completing this assignment:
 Student 1: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-
+It was helful.
 
 ------------------------------------------------------------------------
 Student 2: What is your assessment of the assignment? Was it helpful?
@@ -112,9 +112,9 @@ What is your mywc program test plan?
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
 2e, and 2f to compute fib(500000) on armlab? Fill in the blanks.
 
-Part 2a:  _____ seconds
+Part 2a:  13.121666 seconds
 
-Part 2b:  _____ seconds
+Part 2b:  5.202753 seconds
 
 Part 2d:  _____ seconds
 
