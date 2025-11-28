@@ -106,8 +106,9 @@ main:
             cmp     w2, TRUE
             beq     endif3
 
+            //iInWord = TRUE;
             mov     w3, TRUE
-            str     w3, [x1] //iInWord = TRUE;
+            str     w3, [x1] 
         endif2:
         endif3:
 
