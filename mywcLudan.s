@@ -103,7 +103,7 @@ main:
         //if(!(iInWord)) b endif3
             adr     x1, iInWord
             ldr     w2, [x1]
-            cmp     w2, FALSE
+            cmp     w2, TRUE
             beq     endif3
 
             mov     w3, TRUE
