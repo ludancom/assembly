@@ -78,7 +78,6 @@ main:
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
         ldr     w0, [x1] //put iCHAR into w0, the argument reg
         bl      isspace
-
         cmp     w0, FALSE
         beq     else1
 
@@ -93,11 +92,12 @@ main:
             add     x3, x3, 1 //lWordCount++
             str     x3, [x2] //save into lWordcount the value of x3
 
-
+            //iInWord = FALSE;
             adr     x4, iInWord //w4 has inword address
-            mov     w5, FALSE //iInWord = FALSE;
+            mov     w5, FALSE 
             str     w5, [x4] //store inro iInWord the falue from w4
-            endif2:
+            b endif2
+            
 
         else1:
         //if(!(iInWord)) b endif3
@@ -108,25 +108,26 @@ main:
 
             mov     w3, TRUE
             str     w3, [x1] //iInWord = TRUE;
+        endif2:
         endif3:
 
-        endif1:
         //if(iChar != '\n') b endif4
         adr     x1, iChar;
         ldr     w2, [x1];
-        cmp     w2, #'\n'; //comparing iChar with newline character
-        beq     endif4
+        cmp     w2, 0X0A // 0X0A is '\n', comparing iChar with newline character
+        bne     endif4
 
+        //lLineCount++
         adr     x1, lLineCount
         ldr     x2, [x1]
-        add     x2, x2, 1 //lLineCount++
+        add     x2, x2, 1 
         str     x2, [x1];
         endif4:
     b loop1
 
     endloop1:
 
-    //if(!(iInWord)) b endif5
+    //if(!(iInWord)) goto endif5
     adr     x1, iInWord
     ldr     w2, [x1]
     cmp     w2, FALSE
