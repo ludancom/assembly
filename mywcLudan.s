@@ -20,17 +20,13 @@ printfFormatStr:
     // static long lWordCount = 0;      /* Bad style. */
     // static long lCharCount = 0;      /* Bad style. */
     // tatic int iInWord = FALSE;      /* Bad style. */
-
-    .global lLineCount
+    
     lLineCount: .quad 0
 
-    .global lWordCount
     lWordCount: .quad 0
 
-    .global lCharCount
     lCharCount: .quad 0
 
-    .global iInWord
     iInWord: .word FALSE;
 
 
@@ -71,6 +67,12 @@ main:
     
         cmp w0, EOF
         beq endloop1
+
+        //lCharCount++;
+        adr     x1 lCharCount
+        ldr     x2, [x1] // x2 has lCharCount value
+        add     x2, x2, 1 //lCharCount++;
+        str     x2, [x1]; //store into lCharCount the value of x2
 
         //if(!(isspace(iChar))) b else1
         adr     x1, iChar //store the address of ichar into x1 (adr needs x, not w)
