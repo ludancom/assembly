@@ -69,7 +69,7 @@ main:
         beq endloop1
 
         //lCharCount++;
-        adr     x1 lCharCount
+        adr     x1, lCharCount
         ldr     x2, [x1] // x2 has lCharCount value
         add     x2, x2, 1 //lCharCount++;
         str     x2, [x1]; //store into lCharCount the value of x2
