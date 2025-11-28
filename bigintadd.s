@@ -23,7 +23,7 @@
     //------------------------------------------------------------------
 
     // Must be a multiple of 16
-    .equ    STACK_BYTECOUNT, 16
+    .equ    STACK_BYTECOUNT, 32
     
     // Parameter stack offsets
     .equ LLENGTH1, 8
@@ -42,19 +42,21 @@ BigInt_larger:
         // Parameters: long lLength1, long lLength2
         str x0, [sp, LLENGTH1]    // Save lLength1
         str x1, [sp, LLENGTH2]    // Save lLength2 
-        // long lLarger;
         // if (lLength1 <= lLength2) goto else1;
-    
-     
-  
-
-    if (lLength1 <= lLength2) goto else1;
-    lLarger = lLength1;
-    goto endif1;
+        cmp [x0], [x1]  // x0 points to lLength1, x1 points lLength2 
+        ble else1
+        // long lLarger; lLarger = lLength1;
+        str [x0], [sp, LLARGER] // Save lLarger; 
+        b endif1 
     else1:
-        lLarger = lLength2;
+        // long lLarger; lLarger = lLength2;
+        str [x1], [sp, LLARGER] // Save lLarger; 
     endif1:
-    return lLarger;
+        // return lLarger;
+        ldr x0, [sp, LLLARGER]  // Load lLarger
+        ldr x30, [sp]            // Restore x30
+        add sp, sp, STACK_BYTECOUNT
+        ret
     
 
 /*--------------------------------------------------------------------*/
